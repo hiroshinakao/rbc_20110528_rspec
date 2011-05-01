@@ -1,23 +1,46 @@
-$B%?%$%`%F!<%V%k(B
-09:30 - $B3+>l(B
-10:00 - $B$"$$$5$DE*$J$d$D(B
-10:30 - SSH$B$G%m%0%$%s(B
-11:00 - $B4pK\%3%^%s%I(B(ls, pwd, cd$B$H$+$N:G>.8B(B)
+# -*- encoding: utf-8 -*-
+タイムテーブル
+09:30 - 開場
+10:00 - あいさつ的なやつ
+10:30 - SSHでログイン
+11:00 - 基本コマンド(ls, pwd, cdとかの最小限)
 11:30 - vim
-12:00 - $B5Y7F(B
-13:00 - RSpec $B$=$N(B1
-  Spec$B%U%!%$%k$OMQ0U:Q$_(B
-  $B!&$^$:$O(BRSpec$B$NFI$_J}@bL@(B
-  $B!&<B9TJ}K!(B(rspec$B%3%^%s%I(B)
-  $B!&(BSpec$B$,DL$k$h$&$K<BAu$7$F$_$h$&(B
-14:00 - RSpec $B$=$N(B2 
-  $B;EMM$r(BSpec$B$KMn$H$7$3$s$G$$$3$&(B
-  $B!&;HMQ$+$i(Bspec$B%U%!%$%k$r:n@.$7$F$_$k(B
-  $B!&(Bspec$B$r=q$$$?$i<BAu$7$F$_$k(B
-  $B!&(Bred -> green $B$r7+$jJV$7$F$$$/(B
-15:30 - RSpec $B$=$N(B3
- $B;EMMJQ99$KBP1~$7$h$&(B
-16:15 - $B%A!<%`H/I=(B
-16:45 - $B$"$$$5$DE*$J$d$D(B
-17:00 - $B=*N;(B
+12:00 - 休憩
+13:00 - RSpec その1
+  Specファイルは用意済み
+  ・まずはRSpecの読み方説明
+  ・実行方法(rspecコマンド)
+  ・Specが通るように実装してみよう
+14:00 - RSpec その2 
+  仕様をSpecに落としこんでいこう
+  ・使用からspecファイルを作成してみる
+  ・specを書いたら実装してみる
+  ・red -> green を繰り返していく
+15:30 - RSpec その3
+ 仕様変更に対応しよう
+16:15 - チーム発表
+16:45 - あいさつ的なやつ
+17:00 - 終了
  
+----- spec を実行する -----
+まずは bundler をインストール
+$ (sudo) gem install bundler --no-rdoc --no-ri
+
+rbc_20110528_rspec に移動しgemインストールのコマンドを実行
+$ bundle install
+
+rbc_20110528_rspe/01/spec に移動し、specを実行
+$ bundle exec rspec person_spec.rb -fs -c
+(-c は実行結果に色をつける、-fs はテスト内容を詳細表示)
+
+----- こんなカンジで進めたい ----
+まずは、 person_spec.rb を使って、specファイルの読み方を説明。
+(Personクラスは未実装なので、エラーが出ることも伝える)
+ひととおり理解してもらったら、Personクラス内の実装を行ってもらう。
+グリーンになったら完了。
+別記法は参考程度でいいと思います。
+
+(TODO)
+追加して欲しい仕様を伝える
+その仕様をspecに落とし、実装を行う。
+(内容はこれから考えます)
