@@ -31,4 +31,32 @@ describe "Person" do
     Date.stub!(:today) { Date.new(2011, 7, 31)}
     shimao.age.should == 4
   end
+
+# 上の記述は以下のようにも表現できます。
+#   before do
+#     @shimao = Person.new(name: "shimao", gender: :male, birthday: Date.new(2007, 7, 31))
+#     @shimako = Person.new(name: "shimako", gender: :female, birthday: Date.new(2007, 8, 1))
+#   end
+#   context "shimao" do
+#     subject{ @shimao }
+#     its(:name){ should == "shimao"}
+#     its(:gender) { should == :male }
+#     its(:birthday) { should == Date.new(2007, 7, 31) }
+#     it { subject.should be_male }
+#     it { subject.should_not be_female }
+#     context "誕生日前" do
+#       before { Date.stub!(:today) { Date.new(2011, 7, 30) } }
+#       its(:age) { should == 3 }
+#     end
+#     context "誕生日当日" do
+#       before { Date.stub!(:today) { Date.new(2011, 7, 31) } }
+#       its(:age) { should == 4 }
+#     end
+#   end
+
+#   context "shimako" do
+#     subject{ @shimako }
+#     it { subject.should_not be_male }
+#     it { subject.should be_female }
+#   end
 end
