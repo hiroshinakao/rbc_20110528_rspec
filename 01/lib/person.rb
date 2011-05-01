@@ -8,6 +8,14 @@ class Person
     @birthday = options.delete(:birthday)
   end
 
+  def male?
+    @gender == :male
+  end
+
+  def female?
+    @gender == :female
+  end
+
   def age
     # http://itpro.nikkeibp.co.jp/article/Watcher/20070822/280097/
     (Date.today.strftime("%Y%m%d").to_i - @birthday.strftime("%Y%m%d").to_i) / 10000

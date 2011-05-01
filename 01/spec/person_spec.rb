@@ -9,6 +9,21 @@ describe "Person" do
     shimao.gender.should == :male
     shimao.birthday.should == Date.new(2007, 7, 31)
   end
+
+  it "Person#male? で男性の判断ができるべき" do
+    shimao =  Person.new(name: "shimao", gender: :male, birthday: Date.new(2007, 7, 31))
+    shimao.should be_male
+    shimako =  Person.new(name: "shimako", gender: :female, birthday: Date.new(2007, 8, 1))
+    shimako.should_not be_male
+  end
+
+  it "Person#female? で女性の判断ができるべき" do
+    shimao =  Person.new(name: "shimao", gender: :male, birthday: Date.new(2007, 7, 31))
+    shimao.should_not be_female
+    shimako =  Person.new(name: "shimako", gender: :female, birthday: Date.new(2007, 8, 1))
+    shimako.should be_female
+  end
+
   it "Person#age で年齢を取得できるべき" do
     shimao = Person.new(name: "shimao", gender: :male, birthday: Date.new(2007, 7, 31))
     Date.stub!(:today) { Date.new(2011, 7, 30)}
