@@ -3,6 +3,10 @@ require 'rspec'
 require File.expand_path('../lib/person', File.dirname(__FILE__))
 
 describe "Person" do
+
+  # その1
+  # 作成済みのspecを元に Personクラスの中身を実装してもらう
+  # Person#ageの実装は難しいかもしれないです
   it "Personには名前、性別、生年月日を設定できるべき" do
     shimao = Person.new(name: "shimao", gender: :male, birthday: Date.new(2007, 7, 31))
     shimao.name.should == "shimao"
@@ -60,6 +64,15 @@ describe "Person" do
 #     it { subject.should be_female }
 #   end
 
+
+  # その2
+
+  # 仕様を伝えてSpecを書いて実装してもらう
+  # 実装するのは名前の先頭のみを大文字にして返すPerson#capitalized_nameメソッド
+  # 例) shimao, SHIMAO => Shimao
+
+  # person.rbにPerson#sayを冗長な形式で記述済み
+  # 参加者にはリファクタリングをしてもらい、テストコードの大切さを実感してもらう
   describe :say do
     before do
       @shimao = Person.new(name: "shimao", gender: :male, birthday: Date.new(2007, 7, 31))
