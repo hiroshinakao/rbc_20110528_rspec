@@ -30,7 +30,7 @@ $ (sudo) gem install bundler --no-rdoc --no-ri
 rbc_20110528_rspec に移動しgemインストールのコマンドを実行
 $ bundle install
 
-rbc_20110528_rspe/01/spec に移動し、specを実行
+rbc_20110528_rspe/spec に移動し、specを実行
 $ bundle exec rspec person_spec.rb -fs -c
 (-c は実行結果に色をつける、-fs はテスト内容を詳細表示)
 
