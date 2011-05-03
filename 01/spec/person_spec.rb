@@ -59,4 +59,20 @@ describe "Person" do
 #     it { subject.should_not be_male }
 #     it { subject.should be_female }
 #   end
+
+  describe :say do
+    before do
+      @shimao = Person.new(name: "shimao", gender: :male, birthday: Date.new(2007, 7, 31))
+    end
+    it "時刻に合わせて挨拶の文言が変わるべき" do
+      Time.stub!(:now) { Time.mktime(2011, 1, 1, 9, 0) } # 9:00
+      @shimao.say.should == "Good morning!"
+      Time.stub!(:now) { Time.mktime(2011, 1, 1, 13, 0) } # 13:00
+      @shimao.say.should == "Good afternoon!"
+      Time.stub!(:now) { Time.mktime(2011, 1, 1, 18, 0) } # 18:00
+      @shimao.say.should == "Good evening!"
+      Time.stub!(:now) { Time.mktime(2011, 1, 1, 22, 0) } # 22:00
+      @shimao.say.should == "Good night!"
+    end
+  end
 end
