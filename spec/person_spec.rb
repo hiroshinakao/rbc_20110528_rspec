@@ -68,8 +68,17 @@ describe "Person" do
   # その2
 
   # 仕様を伝えてSpecを書いて実装してもらう
-  # 実装するのは名前の先頭のみを大文字にして返すPerson#capitalized_nameメソッド
+  # 実装するのはnameの先頭のみを大文字にして返すPerson#capitalized_nameメソッド
   # 例) shimao, SHIMAO => Shimao
+  # specの例としては以下のような感じ
+  describe :capitalized_name do
+    it "nameの先頭のみを大文字にするべき" do
+      shimao1 = Person.new(name: "shimao")
+      shimao1.capitalized_name.should == "Shimao"
+      shimao2 = Person.new(name: "SHIMAO")
+      shimao2.capitalized_name.should == "Shimao"
+    end
+  end
 
   # person.rbにPerson#sayを冗長な形式で記述済み
   # 参加者にはリファクタリングをしてもらい、テストコードの大切さを実感してもらう

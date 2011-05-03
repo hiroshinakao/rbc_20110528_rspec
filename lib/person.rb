@@ -21,6 +21,10 @@ class Person
     (Date.today.strftime("%Y%m%d").to_i - @birthday.strftime("%Y%m%d").to_i) / 10000
   end
 
+  def capitalized_name
+    @name.capitalize
+  end
+
   def say
     # リファクタリング前なので冗長な記述
     now = Time.now
