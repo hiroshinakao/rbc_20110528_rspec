@@ -1,5 +1,6 @@
 # -*- encoding: utf-8 -*-
 require 'rspec'
+require 'date'
 require File.expand_path('../lib/person', File.dirname(__FILE__))
 
 describe "Person" do
@@ -29,6 +30,7 @@ describe "Person" do
   end
 
   it "Person#age で年齢を取得できるべき" do
+    pending "余裕があれば実装にチャレンジ"
     shimao = Person.new(name: "shimao", gender: :male, birthday: Date.new(2007, 7, 31))
     Date.stub!(:today) { Date.new(2011, 7, 30)}
     shimao.age.should == 3

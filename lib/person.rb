@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+require 'date'
 class Person
   attr_accessor :name, :gender, :birthday
 
