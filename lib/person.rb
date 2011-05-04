@@ -1,12 +1,19 @@
 # -*- encoding: utf-8 -*-
 require 'date'
 class Person
-  attr_accessor :name, :gender, :birthday
+  attr_accessor :name, :birthday
+  attr_reader :gender
 
   def initialize(options)
-    @name = options.delete(:name)
-    @gender = options.delete(:gender)
-    @birthday = options.delete(:birthday)
+    self.name = options.delete(:name)
+    self.gender = options.delete(:gender)
+    self.birthday = options.delete(:birthday)
+  end
+
+  # ライブコーディングの記述例
+  # setterで文字列からシンボルに変換しています
+  def gender=(val)
+    @gender = val.downcase.to_sym if val
   end
 
   def male?

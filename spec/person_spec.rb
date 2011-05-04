@@ -82,6 +82,19 @@ describe "Person" do
     end
   end
 
+  # ライブコーディング
+  # genderはシンボルだけではなく文字列でもオッケーにする
+  describe :gender= do
+    it "genderを文字列でセットしてもシンボルに変換してセットすべき" do
+      shimao = Person.new(name: "shimao", gender: "male")
+      shimao.gender.should == :male
+      shimao = Person.new(name: "shimao", gender: "Male")
+      shimao.gender.should == :male
+      shimao = Person.new(name: "shimao", gender: :Male)
+      shimao.gender.should == :male
+    end
+  end
+
   # person.rbにPerson#sayを冗長な形式で記述済み
   # 参加者にはリファクタリングをしてもらい、テストコードの大切さを実感してもらう
   describe :say do
