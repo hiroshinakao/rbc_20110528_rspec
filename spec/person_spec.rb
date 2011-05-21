@@ -1,13 +1,17 @@
-# -*- encoding: utf-8 -*-
+# -*- coding: utf-8 -*-
 require 'rspec'
 require 'date'
 require File.expand_path('../lib/person', File.dirname(__FILE__))
 
 describe "Person" do
-
-  # その1
-  # 作成済みのspecを元に Personクラスの中身を実装してもらう
-  # Person#ageの実装は難しいかもしれないです
+  #
+  # RSpec その 1
+  #
+  # 作成済みのspecを元に Personクラスの中身を実装しよう
+  # RSpec の実行は以下のコマンドで実行できます
+  #
+  # rspec spec/person_spec.rb -fs -c
+  #
   it "Personには名前、性別、生年月日を設定できるべき" do
     shimao = Person.new(name: "shimao", gender: :male, birthday: Date.new(2007, 7, 31))
     shimao.name.should == "shimao"
@@ -29,7 +33,10 @@ describe "Person" do
     shimako.should be_female
   end
 
+  # 上の実装がクリアできたらチャレンジ
   it "Person#age で年齢を取得できるべき" do
+    # pending を記述しているとテストを実行しません
+    # 下の1行を削除することでテストを実行します
     pending "余裕があれば実装にチャレンジ"
     shimao = Person.new(name: "shimao", gender: :male, birthday: Date.new(2007, 7, 31))
     Date.stub!(:today) { Date.new(2011, 7, 30)}
@@ -67,36 +74,20 @@ describe "Person" do
 #   end
 
 
-  # その2
-
-  # 仕様を伝えてSpecを書いて実装してもらう
+  #
+  # RSpec その 2
+  #
+  # 仕様から Spec を書いて実装してみよう
+  #
   # 実装するのはnameの先頭のみを大文字にして返すPerson#capitalized_nameメソッド
   # 例) shimao, SHIMAO => Shimao
-  # specの例としては以下のような感じ
   describe :capitalized_name do
-    it "nameの先頭のみを大文字にするべき" do
-      shimao1 = Person.new(name: "shimao")
-      shimao1.capitalized_name.should == "Shimao"
-      shimao2 = Person.new(name: "SHIMAO")
-      shimao2.capitalized_name.should == "Shimao"
-    end
+    # この中に仕様を書いていきます
   end
 
-  # ライブコーディング
-  # genderはシンボルだけではなく文字列でもオッケーにする
-  describe :gender= do
-    it "genderを文字列でセットしてもシンボルに変換してセットすべき" do
-      shimao = Person.new(name: "shimao", gender: "male")
-      shimao.gender.should == :male
-      shimao = Person.new(name: "shimao", gender: "Male")
-      shimao.gender.should == :male
-      shimao = Person.new(name: "shimao", gender: :Male)
-      shimao.gender.should == :male
-    end
-  end
-
-  # person.rbにPerson#sayを冗長な形式で記述済み
-  # 参加者にはリファクタリングをしてもらい、テストコードの大切さを実感してもらう
+  # リファクタリングをしてみよう
+  # person.rb に Person#say は実装していますが、コードが冗長です
+  # テスト結果が変わらないように Person#say の実装方法をへんこうしてみよう
   describe :say do
     before do
       @shimao = Person.new(name: "shimao", gender: :male, birthday: Date.new(2007, 7, 31))
