@@ -33,18 +33,6 @@ describe "Person" do
     shimako.should be_female
   end
 
-  # 上の実装がクリアできたらチャレンジ
-  it "Person#age で年齢を取得できるべき" do
-    # pending を記述しているとテストを実行しません
-    # 下の1行を削除することでテストを実行します
-    pending "余裕があれば実装にチャレンジ"
-    shimao = Person.new(name: "shimao", gender: :male, birthday: Date.new(2007, 7, 31))
-    Date.stub!(:today) { Date.new(2011, 7, 30)}
-    shimao.age.should == 3
-    Date.stub!(:today) { Date.new(2011, 7, 31)}
-    shimao.age.should == 4
-  end
-
 # 上の記述は以下のようにも表現できます。
 #   before do
 #     @shimao = Person.new(name: "shimao", gender: :male, birthday: Date.new(2007, 7, 31))
@@ -57,14 +45,6 @@ describe "Person" do
 #     its(:birthday) { should == Date.new(2007, 7, 31) }
 #     it { subject.should be_male }
 #     it { subject.should_not be_female }
-#     context "誕生日前" do
-#       before { Date.stub!(:today) { Date.new(2011, 7, 30) } }
-#       its(:age) { should == 3 }
-#     end
-#     context "誕生日当日" do
-#       before { Date.stub!(:today) { Date.new(2011, 7, 31) } }
-#       its(:age) { should == 4 }
-#     end
 #   end
 
 #   context "shimako" do
@@ -87,7 +67,7 @@ describe "Person" do
 
   # リファクタリングをしてみよう
   # person.rb に Person#say は実装していますが、コードが冗長です
-  # テスト結果が変わらないように Person#say の実装方法をへんこうしてみよう
+  # テスト結果が変わらないように Person#say の実装方法を変更してみよう
   describe :say do
     before do
       @shimao = Person.new(name: "shimao", gender: :male, birthday: Date.new(2007, 7, 31))
